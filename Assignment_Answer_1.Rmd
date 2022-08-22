@@ -1,0 +1,120 @@
+---
+title: "Assignment_1"
+author: "Jeevanantham.k"
+date: "2022-08-18"
+output: html_document
+---
+
+```{r}
+library(ISLR)
+library(MASS)
+
+```
+
+1.	This exercise involves the Auto data set studied in the lab. Make sure that the missing values have been removed from the data.
+
+ (a) Which of the predictors are quantitative, and which are qualitative?
+ 
+```{r}
+Auto
+```
+ 
+```{r}
+str(Auto)
+```
+ 
+ 
+ 
+(b) What is the range of each quantitative predictor? You can answer this using the range() function
+
+```{r}
+range(Auto$mpg)
+
+```
+
+```{r}
+range(Auto$cylinders)
+
+```
+
+```{r}
+range(Auto$displacement)
+
+```
+
+```{r}
+range(Auto$horsepower)
+
+```
+
+```{r}
+range(Auto$weight)
+
+```
+
+```{r}
+range(Auto$acceleration)
+
+```
+
+
+```{r}
+range(Auto$year)
+
+```
+
+
+(c) What is the mean and standard deviation of each quantitative predictor? 
+
+
+```{r}
+sapply(Auto[,1:7], mean)
+
+```
+
+
+```{r}
+sapply(Auto[,1:7], sd)
+```
+
+
+(d)	 Now remove the 10th through 85th observations. What is the range, mean, and standard deviation of each predictor in the subset of the data that remains? 
+
+```{r}
+Auto_dropped = Auto[-(10:85),-(8:9)]
+sapply(Auto_dropped, range)
+```
+
+```{r}
+sapply(Auto_dropped, mean)
+
+```
+
+
+```{r}
+sapply(Auto_dropped, sd)
+
+```
+
+
+(e)	Using the full data set, investigate the predictors graphically, using scatterplots or other tools of your choice. Create some plots highlighting the relationships among the predictors. Comment on your findings.
+
+
+
+```{r}
+pairs(Auto[,1:7])
+
+```
+
+```{r}
+cor(Auto[,1:7], method = "pearson")
+
+```
+
+
+(f) Suppose that we wish to predict gas mileage (mpg) on the basis of the other variables. Do your plots suggest that any of the other variables might be useful in predicting mpg? Justify your answer
+
+ans:Yes, since almost every variable is at least moderately correlated with mpg.
+
+
+
